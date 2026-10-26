@@ -1,0 +1,59 @@
+
+
+<section class="fx" id="fx-root">
+  <!-- 1. MOOD HOME -->
+  <div class="fx-card">
+    <h2>How are you feeling?</h2>
+    <div class="fx-moods" id="fx-moods">
+      <button class="mood-btn active" data-mood="All">All</button>
+      <button class="mood-btn" data-mood="Happy">😊 Happy</button>
+      <button class="mood-btn" data-mood="Sad">😢 Sad</button>
+      <button class="mood-btn" data-mood="Chill">😌 Chill</button>
+      <button class="mood-btn" data-mood="Workout">💪 Workout</button>
+    </div>
+    <div class="fx-songs" id="fx-songs"></div>
+  </div>
+
+  <!-- 2. STUDY MODE -->
+  <div class="fx-card">
+    <h2>📚 Study mode</h2>
+    <div class="fx-timer" id="fx-timer">25:00</div>
+    <p id="fx-phase" class="fx-sub">Ready to focus</p>
+    <div class="fx-row">
+      <label>Focus <input type="number" id="fx-focus-min" value="25" min="1" max="90"> min</label>
+      <label>Break <input type="number" id="fx-break-min" value="5" min="1" max="30"> min</label>
+    </div>
+    <div class="fx-row">
+      <button id="fx-start">Start</button>
+      <button id="fx-pause" class="ghost">Pause</button>
+      <button id="fx-reset" class="ghost">Reset</button>
+    </div>
+    <p class="fx-sub">Sessions done: <b id="fx-sessions">0</b></p>
+  </div>
+
+  <!-- 3. LISTENING STATS -->
+  <div class="fx-card">
+    <h2>📊 Your listening stats</h2>
+    <p class="fx-sub">Total listened: <b id="fx-total">0</b> min</p>
+    <div class="fx-two">
+      <div><h3>Top songs</h3><ol id="fx-top-songs"></ol></div>
+      <div><h3>Top artists</h3><ol id="fx-top-artists"></ol></div>
+    </div>
+    <button class="ghost" id="fx-refresh-stats">Refresh</button>
+  </div>
+
+  <!-- 4. PLAYLISTS + SHARE -->
+  <div class="fx-card">
+    <h2>🎵 My playlists</h2>
+    <div class="fx-row">
+      <input type="text" id="fx-pl-name" placeholder="New playlist name">
+      <button id="fx-pl-create">Create</button>
+    </div>
+    <div id="fx-playlists"></div>
+  </div>
+
+  <audio id="fx-audio" controls></audio>
+  <div id="fx-now" class="fx-sub"></div>
+</section>
+
+<script src="/js/features.js"></script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Playlists</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/css/features.css">
+</head>
+<body class="page-body">
+  <div class="page-wrap">
+    <%- include('partials/topbar') %>
+    <h2 class="section-title">Your Playlists</h2>
+
+    <form action="/playlists" method="POST" class="create-form">
+      <input type="text" name="name" placeholder="Nayi playlist ka naam" maxlength="60" required>
+      <button type="submit" class="green-btn">Create</button>
+    </form>
+    <% if (error) { %><p class="error"><%= error %></p><% } %>
+
+    <div class="playlist-list">
+      <% if (playlists.length === 0) { %>
+        <p class="empty">Abhi koi playlist nahi hai. Upar se banao.</p>
+      <% } %>
+      <% playlists.forEach(function(p) { %>
+        <div class="playlist-item">
+          <a href="/playlists/<%= p._id %>"><%= p.name %></a>
+          <span class="count"><%= p.songs.length %> songs</span>
+          <form action="/playlists/<%= p._id %>/delete" method="POST" class="inline-form"
+                onsubmit="return confirm('Ye playlist delete karni hai?')">
+            <button type="submit" class="danger-btn">Delete</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>

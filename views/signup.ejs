@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="/css/features.css">
+</head>
+<body class="auth-body">
+  <div class="auth-card">
+    <h2>Sign up</h2>
+    <% if (error) { %><p class="error"><%= error %></p><% } %>
+    <form action="/signup" method="POST">
+      <input type="text" name="username" placeholder="Username" value="<%= form.username || '' %>" required>
+      <input type="email" name="email" placeholder="Email" value="<%= form.email || '' %>" required>
+      <input type="password" name="password" placeholder="Password (min 6)" required>
+      <button type="submit" class="green-btn full">Create account</button>
+    </form>
+    <p class="auth-switch">Pehle se account hai? <a href="/login">Login</a></p>
+    <p class="auth-switch"><a href="/">Home par wapas</a></p>
+  </div>
+</body>
+</html>

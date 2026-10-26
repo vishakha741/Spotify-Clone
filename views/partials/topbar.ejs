@@ -1,0 +1,26 @@
+<div class="topbar">
+  <a href="/" class="logo">
+  <svg viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="12" fill="#1db954"/>
+    <path d="M5 9c5-1.5 10-1 14 1.5M6 13c4-1 8-.7 11 1M7 16.5c3-.7 6-.4 8.5.8"
+          stroke="#000" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  </svg>
+  <span>Spotify Clone</span>
+</a>
+  <form class="search-box" action="/" method="GET">
+    <input type="text" name="q" placeholder="Song, artist ya mood search karo" value="<%= typeof q !== 'undefined' ? q : '' %>">
+    <button type="submit">Search</button>
+  </form>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <% if ( typeof currentUser !=='undefined' && currentUser) { %>
+      <a href="/liked">Liked Songs</a>
+      <a href="/playlists">Playlists</a>
+      <span class="hello">Hi, <%= currentUser.username %></span>
+      <form action="/logout" method="POST" class="inline-form"><button type="submit" class="link-btn">Logout</button></form>
+    <% } else { %>
+      <a href="/login">Login</a>
+      <a href="/signup" class="signup-link">Sign up</a>
+    <% } %>
+  </div>
+</div>

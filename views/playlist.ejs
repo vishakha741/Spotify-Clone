@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= playlist.name %></title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/css/features.css">
+</head>
+<body class="page-body">
+  <div class="page-wrap">
+    <%- include('partials/topbar') %>
+    <h2 class="section-title"><%= playlist.name %></h2>
+    <p><a href="/playlists" class="back-link">&larr; Saari playlists</a></p>
+
+    <div class="cards-container">
+      <% if (songs.length === 0) { %>
+        <p class="empty">Is playlist mein abhi koi song nahi hai. Home par jaake + dabao.</p>
+      <% } %>
+      <% songs.forEach(function(song) { %>
+        <div class="card-wrap">
+          <%- include('partials/card', { song: song, likedIds: likedIds }) %>
+          <form action="/playlists/<%= playlist._id %>/songs/<%= song._id %>/remove" method="POST">
+            <button type="submit" class="danger-btn small">Remove</button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <%- include('partials/player') %>
+</body>
+</html>

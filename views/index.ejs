@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Clone</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/css/features.css">
+</head>
+<body>
+  <div class="main">
+    <div class="main-content">
+      <%- include('partials/topbar') %>
+      <%
+  var h = new Date().getHours();
+  var greet = h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
+%>
+<div class="hero">
+  <h1><%= greet %><% if (typeof currentUser !== 'undefined' && currentUser) { %>, <%= currentUser.username %><% } %> 👋</h1>
+  <p>Mood chuno, focus karo, aur apni playlist dosto ke saath share karo.</p>
+</div>
+
+<% if (!q) { %>
+  <h2 class="section-title">🔥 Popular songs</h2>
+<% } %>
+
+      <% if (q) { %>
+        <h2 class="section-title">Results for "<%= q %>"</h2>
+      <% } %>
+
+      <div class="cards-container">
+        <% if (songs.length === 0) { %>
+          <p class="empty">Koi song nahi mila.</p>
+        <% } %>
+        <% songs.forEach(function(song) { %>
+          <%- include('partials/card', { song: song, likedIds: likedIds }) %>
+        <% }) %>
+      </div>
+      <h2 class="section-title">✨ Made for you</h2>
+      <%- include('partials/features') %>
+    </div>
+  </div>
+
+  <%- include('partials/player') %>
+  <script src="/js/player.js"></script>
+</body>
+</html>

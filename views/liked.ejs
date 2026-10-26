@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liked Songs</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/css/features.css">
+</head>
+<body class="page-body">
+  <div class="page-wrap">
+    <%- include('partials/topbar') %>
+    <h2 class="section-title">Liked Songs</h2>
+    <div class="cards-container">
+      <% if (songs.length === 0) { %>
+        <p class="empty">Abhi koi liked song nahi hai. Home par jaake heart dabao.</p>
+      <% } %>
+      <% songs.forEach(function(song) { %>
+        <%- include('partials/card', { song: song, likedIds: likedIds }) %>
+      <% }) %>
+    </div>
+  </div>
+  <%- include('partials/player') %>
+</body>
+</html>

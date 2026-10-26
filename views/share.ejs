@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= playlist.name %> | Shared playlist</title>
+  <link rel="stylesheet" href="/css/features.css">
+</head>
+<body class="fx-share">
+  <main class="fx-card">
+    <h1>🎧 <%= playlist.name %></h1>
+    <p class="fx-sub"><%= playlist.songs.length %> songs</p>
+    <% if (!playlist.songs.length) { %><p>This playlist is empty.</p><% } %>
+    <% playlist.songs.forEach(function (s) {
+         var src = s.audioUrl || s.audio || s.src || s.url || ""; %>
+      <div class="fx-song-row">
+        <div><b><%= s.title %></b><br><span class="fx-sub"><%= s.artist %></span></div>
+        <% if (src) { %><audio controls preload="none" src="<%= src %>"></audio><% } %>
+      </div>
+    <% }) %>
+    <p><a href="/">← Back to app</a></p>
+  </main>
+</body>
+</html>

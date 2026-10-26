@@ -1,0 +1,14 @@
+<div class="card"
+     data-id="<%= song._id %>"
+     data-audio="<%= song.audioUrl || '' %>"
+     data-title="<%= song.title %>"
+     data-artist="<%= song.artist || '' %>"
+     data-image="<%= song.image || '' %>">
+  <img src="<%= song.image %>" class="card-img" alt="<%= song.title %>">
+  <p class="card-title"><%= song.title %></p>
+  <p class="card-info"><%= song.artist %></p>
+  <div class="card-actions">
+    <button class="card-btn like-btn <%= likedIds.includes(String(song._id)) ? 'liked' : '' %>" title="Like">&#9829;</button>
+    <button class="card-btn add-btn" title="Playlist mein add karo">+</button>
+  </div>
+</div>
