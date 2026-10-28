@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -7,9 +8,10 @@ const { loadUser } = require("./middleware/auth");
 const app = express();
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/spotifyclone")
+  .connect(process.env.MONGO_URL || "mongodb://127.0.0.1:27017/spotifyclone")
   .then(() => console.log("DB connected"))
   .catch((err) => console.log(err));
+  
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -42,4 +44,5 @@ const errorHandler = require("./middleware/errorHandler");
 
 app.use((req, res, next) => next(new ExpressError(404, "Page not found")));
 app.use(errorHandler);
-app.listen(8080, () => console.log("Server running on 8080"));
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log("Server running on", PORT));
